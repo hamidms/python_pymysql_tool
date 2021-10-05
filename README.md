@@ -1,22 +1,16 @@
 # python_pymysql_tool
 Tools for conenct your python with MySQL
 
-Install pymysql
-```sh
-pip install PyMySQL
-```
+1. 🛠 **Setting the DB**
+   
+   `db.py`
 
-Install paramiko
-```sh
-pip install paramiko
-```
+2. 🚀 **Install all the dependencies**
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-Install pandas
-```sh
-pip install pandas
-```
-
-Then
-```sh
-py pymsql_test.py
-```
+3. 🏃‍♂️ **Run**
+    ```sh
+    py pymsql_test.py
+    ```

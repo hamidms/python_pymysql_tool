@@ -1,0 +1,4 @@
+PyMySQL
+paramiko
+pandas
+sshtunnel

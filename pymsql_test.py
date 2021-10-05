@@ -25,7 +25,15 @@ with SSHTunnelForwarder(
         with connection.cursor() as cursor:
             # Create a new record
             sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-            cursor.execute(sql, ('hamid@anbidev.com', 'no-secret'))
+
+            # Record to execute
+            records = [
+                ('hamid@anbidev.com', 'no-secret'),
+                ('kohendru@anbidev.com', 'admin1234'),
+                ('squid@game.com', 'redyellowgreen')
+                ]
+
+            cursor.executemany(sql, records)
 
         # connection is not autocommit by default. So you must commit to save
         # your changes.
@@ -34,6 +42,19 @@ with SSHTunnelForwarder(
         with connection.cursor() as cursor:
             # Read a single record
             sql = "SELECT `id`, `password` FROM `users` WHERE `email`=%s"
-            cursor.execute(sql, ('hamid@anbidev.com',))
+            
+            # Search
+            search = ('hamid@anbidev.com')
+
+            cursor.execute(sql, search)
             result = cursor.fetchone()
-            print(result)
+
+            print("Searching " + search + " : " + result + "\n")
+
+        with connection.cursor() as cursor:
+            # Read all record
+            sql = "SELECT * FROM `users`"
+
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            print("Show all record : " + result)
